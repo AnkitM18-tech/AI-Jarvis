@@ -3,14 +3,14 @@ import speech_recognition as sr
 
 assistant = pyttsx3.init("sapi5")
 voices = assistant.getProperty("voices")
-print(voices)
+# print(voices)
 assistant.setProperty("voices", voices[0].id)
 
 
 def Speak(audio):
     print("   ")
     assistant.say(audio)
-    print("   ")
+    print(f": {audio}")
     assistant.runAndWait()
 
 
@@ -28,3 +28,24 @@ def TakeCommand():
             print("Say that again!")
             return "None"
         return query.lower()
+
+
+def TaskExecution():
+    while True:
+        query = TakeCommand()
+        if "hello" in query:
+            Speak("Hello Sir, I am Jarvis.")
+            Speak("Your Personal AI Assistant.")
+            Speak("How May I Help you?")
+        elif "how are you" in query:
+            Speak("I am Fine Sir!")
+            Speak("What about You?")
+        elif "you need a Break" in query:
+            Speak("Ok Sir, You can call me anytime!")
+            break
+        elif "bye" in query:
+            Speak("Ok Sir , Bye!")
+            break
+
+
+TaskExecution()
