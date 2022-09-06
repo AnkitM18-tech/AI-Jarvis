@@ -62,6 +62,20 @@ def TaskExecution():
             query = query.replace("jarvis", "")
             pwk.search(query)
             Speak("Done Sir!")
+        elif "website" in query:
+            Speak("Ok sir! Launching...")
+            query = query.replace("jarvis", "")
+            query = query.replace("website", "")
+            website1 = query.replace("open", "")
+            website2 = "https://www." + website1 + ".com"
+            browser.open(website2)
+            Speak("Launched The Website Sir!")
+        elif "launch" in query:
+            Speak("Tell me the name of the website!")
+            name = TakeCommand()
+            web = "https://www." + name + ".com"
+            browser.open(web)
+            Speak("Website launched Sir!")
 
 
 # TaskExecution()
