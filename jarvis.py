@@ -1,10 +1,13 @@
 import pyttsx3
 import speech_recognition as sr
+import webbrowser as browser
+import pywhatkit as pwk
 
 assistant = pyttsx3.init("sapi5")
 voices = assistant.getProperty("voices")
 # print(voices)
 assistant.setProperty("voices", voices[0].id)
+assistant.setProperty("rate", 170)
 
 
 def Speak(audio):
@@ -40,12 +43,26 @@ def TaskExecution():
         elif "how are you" in query:
             Speak("I am Fine Sir!")
             Speak("What about You?")
-        elif "you need a Break" in query:
+        elif "you need a break" in query:
             Speak("Ok Sir, You can call me anytime!")
             break
         elif "bye" in query:
             Speak("Ok Sir , Bye!")
             break
+        elif "youtube search" in query:
+            Speak("OK Sir!, This is what I found for Your Search!")
+            query = query.replace("jarvis", "")
+            query = query.replace("youtube search", "")
+            youtube = "https://www.youtube.com/results?search_query=" + query
+            browser.open(youtube)
+            Speak("Done Sir!")
+        elif "google search" in query:
+            Speak("This is what I found for your Search Sir!")
+            query = query.replace("google search", "")
+            query = query.replace("jarvis", "")
+            pwk.search(query)
+            Speak("Done Sir!")
 
 
-TaskExecution()
+# TaskExecution()
+# Speak("Hello Sir, I am Jarvis")
