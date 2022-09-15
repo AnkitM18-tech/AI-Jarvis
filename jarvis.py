@@ -2,6 +2,7 @@ import pyttsx3
 import speech_recognition as sr
 import webbrowser as browser
 import pywhatkit as pwk
+from googletrans import Translator
 import os
 import wikipedia
 import pyautogui as pag
@@ -208,6 +209,29 @@ def TaskExecution():
         os.startfile("D:\\GitHub\\AI-Jarvis\\Screenshots")
         Speak("Here is your ScreenShot Sir!")
 
+    def TakeHindiCommand():
+        command = sr.Recognizer()
+        with sr.Microphone() as source:
+            print("Listening...")
+            command.pause_threshold = 1
+            audio = command.listen(source)
+            try:
+                print("Recognizing...")
+                query = command.recognize_google(audio, language="hi")
+                print(f"You Said : {query}")
+            except Exception as Error:
+                print("Say that again!")
+                return "none"
+            return query.lower()
+
+    def Translate():
+        Speak("Tell Me the Line!")
+        line = TakeHindiCommand()
+        translator = Translator()
+        result = translator.translate(line)
+        Text = result.text
+        Speak(f"The translation for the given line is: {Text}")
+
     while True:
         query = TakeCommand()
         if "hello" in query:
@@ -345,6 +369,8 @@ def TaskExecution():
                     Speak("Alarm Closed")
                 elif now > time:
                     break
+        elif "translator" in query:
+            Translate()
 
 
 TaskExecution()
