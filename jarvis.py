@@ -371,6 +371,16 @@ def TaskExecution():
                     break
         elif "translator" in query:
             Translate()
+        elif "remember that" in query:
+            rememberMsg = query.replace("remember that", "")
+            rememberMsg = rememberMsg.replace("jarvis", "")
+            Speak(f"You told me to remind you that : {rememberMsg}")
+            remember = open("data.txt", "w")
+            remember.write(rememberMsg)
+            remember.close()
+        elif "what do you remember" in query:
+            remember = open("data.txt", "r")
+            Speak(f"You told me that : {remember.read()}")
 
 
 TaskExecution()
