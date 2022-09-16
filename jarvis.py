@@ -381,6 +381,19 @@ def TaskExecution():
         elif "what do you remember" in query:
             remember = open("data.txt", "r")
             Speak(f"You told me that : {remember.read()}")
+        elif "google search" in query:
+            import wikipedia as googleScrape
+            query = query.replace("jarvis", "")
+            query = query.replace("google search", "")
+            query = query.replace("google", "")
+            Speak("This is what I found on the Web!")
+            pwk.search(query)
+
+            try:
+                result = googleScrape.summary(query, 3)
+                Speak(result)
+            except:
+                Speak("No Data Found!")
 
 
 TaskExecution()
