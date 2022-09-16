@@ -254,12 +254,12 @@ def TaskExecution():
             youtube = "https://www.youtube.com/results?search_query=" + query
             browser.open(youtube)
             Speak("Done Sir!")
-        elif "google search" in query:
-            Speak("This is what I found for your Search Sir!")
-            query = query.replace("google search", "")
-            query = query.replace("jarvis", "")
-            pwk.search(query)
-            Speak("Done Sir!")
+        # elif "google search" in query:
+        #     Speak("This is what I found for your Search Sir!")
+        #     query = query.replace("google search", "")
+        #     query = query.replace("jarvis", "")
+        #     pwk.search(query)
+        #     Speak("Done Sir!")
         elif "website" in query:
             Speak("Ok sir! Launching...")
             query = query.replace("jarvis", "")
