@@ -4,6 +4,8 @@ import webbrowser as browser
 import pywhatkit as pwk
 from googletrans import Translator
 import os
+import requests
+from bs4 import BeautifulSoup
 import wikipedia
 import pyautogui as pag
 import keyboard
@@ -133,6 +135,15 @@ def TaskExecution():
             os.system("TASKKILL /F /im chrome.exe")
 
         Speak("Your Command Has been Completed Sir!")
+
+    def Temp():
+        search = "temperature in"
+        city = input("Enter your city:")
+        url = "https://www.google.com/search?q=" + search + " " + city
+        result = requests.get(url)
+        data = BeautifulSoup(result.text, "html.parser")
+        temp = data.find("div", class_="BNeawe").text
+        Speak(f"The Temperature outside is {temp}")
 
     def AutomateYoutube():
         Speak("What's Your Command Sir?")
@@ -394,6 +405,8 @@ def TaskExecution():
                 Speak(result)
             except:
                 Speak("No Data Found!")
+        elif "temperature" in query:
+            Temp()
 
 
 TaskExecution()
