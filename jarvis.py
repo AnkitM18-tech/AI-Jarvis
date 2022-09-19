@@ -10,6 +10,8 @@ import wikipedia
 import pyautogui as pag
 import keyboard
 import pyjokes
+import PyPDF2
+from gtts import gTTS
 import datetime
 from playsound import playsound
 from pydictionary import Dictionary as dict
@@ -243,6 +245,62 @@ def TaskExecution():
         Text = result.text
         Speak(f"The translation for the given line is: {Text}")
 
+    def Reader():
+        Speak("Tell me the Name of the Book!")
+        name = TakeCommand()
+        if "india" in name:
+            os.startfile("D:\\GitHub\\AI-Jarvis\\The One Minute Manager.pdf")
+            book = open(
+                "D:\\GitHub\\AI-Jarvis\\The One Minute Manager.pdf", "rb")
+            pdfReader = PyPDF2.PdfFileReader(book)
+            pages = pdfReader.getNumPages()
+            Speak(f"Number Of Pages In this Books Are {pages}")
+            Speak("From Which Page I have to start reading ?")
+            numPage = int(input("Enter Page number : "))
+            page = pdfReader.getPage(numPage)
+            text = page.extractText()
+            Speak("In Which Language , I have to Read ?")
+            lang = TakeCommand()
+
+            if "hindi" in lang:
+                translate = Translator()
+                textHindi = translate.translate(text, "hi")
+                textTm = textHindi.text
+                speech = gTTS(text=textTm)
+                try:
+                    speech.save("book.mp3")
+                    playsound("book.mp3")
+                except:
+                    playsound("book.mp3")
+            else:
+                Speak(text)
+        elif "europe" in name:
+            os.startfile("D:\\GitHub\\AI-Jarvis\\The One Minute Manager.pdf")
+            book = open(
+                "D:\\GitHub\\AI-Jarvis\\The One Minute Manager.pdf", "rb")
+            pdfReader = PyPDF2.PdfFileReader(book)
+            pages = pdfReader.getNumPages()
+            Speak(f"Number Of Pages In this Books Are {pages}")
+            Speak("From Which Page I have to start reading ?")
+            numPage = int(input("Enter Page number : "))
+            page = pdfReader.getPage(numPage)
+            text = page.extractText()
+            Speak("In Which Language , I have to Read ?")
+            lang = TakeCommand()
+
+            if "hindi" in lang:
+                translate = Translator()
+                textHindi = translate.translate(text, "hi")
+                textTm = textHindi.text
+                speech = gTTS(text=textTm)
+                try:
+                    speech.save("book.mp3")
+                    playsound("book.mp3")
+                except:
+                    playsound("book.mp3")
+            else:
+                Speak(text)
+
     while True:
         query = TakeCommand()
         if "hello" in query:
@@ -407,6 +465,8 @@ def TaskExecution():
                 Speak("No Data Found!")
         elif "temperature" in query:
             Temp()
+        elif "read book" in query:
+            Reader()
 
 
 TaskExecution()
