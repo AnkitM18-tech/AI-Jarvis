@@ -4,6 +4,7 @@ import webbrowser as browser
 import pywhatkit as pwk
 from googletrans import Translator
 import os
+from pywikihow import search_wikihow
 import requests
 from bs4 import BeautifulSoup
 import wikipedia
@@ -48,6 +49,10 @@ def TakeCommand():
 
 
 def TaskExecution():
+
+    Speak("Hello, I am Jarvis")
+    Speak("How Can I Help You ?")
+
     def Music():
         Speak("Tell me the Name of the Song!")
         musicName = TakeCommand()
@@ -329,6 +334,7 @@ def TaskExecution():
             Speak("What about You?")
         elif "you need a break" in query:
             Speak("Ok Sir, You can call me anytime!")
+            Speak("Just Say Wake Up Jarvis!")
             break
         elif "bye" in query:
             Speak("Ok Sir , Bye!")
@@ -490,6 +496,14 @@ def TaskExecution():
             SpeedTest()
         elif "internet speed" in query:
             SpeedTest()
+        elif "how to" in query:
+            Speak("Getting Data From Internet!")
+            op = query.replace("jarvis", "")
+            max_result = 1
+            how_to_function = search_wikihow(op, max_result)
+            assert len(how_to_function) == 1
+            how_to_function[0].print()
+            Speak(how_to_function[0].summary)
 
 
 TaskExecution()
