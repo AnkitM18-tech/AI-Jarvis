@@ -301,6 +301,23 @@ def TaskExecution():
             else:
                 Speak(text)
 
+    def SpeedTest():
+        import speedtest
+        Speak("Checking speed...")
+        speed = speedtest.Speedtest()
+        downloadingSpeedMBPT = speed.download()
+        downloadingSpeedMBPS = int(downloadingSpeedMBPT/800000)
+        uploadingSpeedMBPT = speed.upload()
+        uploadingSpeedMBPS = int(uploadingSpeedMBPT/800000)
+
+        if "uploading" in query:
+            Speak(f"The Uploading Speed is : {uploadingSpeedMBPS} MB/s")
+        elif "downloading" in query:
+            Speak(f"The Downloading Speed is : {downloadingSpeedMBPS} MB/s")
+        else:
+            Speak(
+                f"The Downloading Speed is : {downloadingSpeedMBPS} MB/s and The Uploading Speed is : {uploadingSpeedMBPS} MB/s")
+
     while True:
         query = TakeCommand()
         if "hello" in query:
@@ -467,6 +484,12 @@ def TaskExecution():
             Temp()
         elif "read book" in query:
             Reader()
+        elif "downloading speed" in query:
+            SpeedTest()
+        elif "uploading speed" in query:
+            SpeedTest()
+        elif "internet speed" in query:
+            SpeedTest()
 
 
 TaskExecution()
