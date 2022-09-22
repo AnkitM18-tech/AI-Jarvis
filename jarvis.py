@@ -12,6 +12,7 @@ import pyautogui as pag
 import keyboard
 import pyjokes
 import PyPDF2
+import time
 from gtts import gTTS
 import datetime
 from playsound import playsound
@@ -323,6 +324,22 @@ def TaskExecution():
             Speak(
                 f"The Downloading Speed is : {downloadingSpeedMBPS} MB/s and The Uploading Speed is : {uploadingSpeedMBPS} MB/s")
 
+    def WhatsAppAdv(number, message):
+        phNo = '+91' + int(number)
+        messageText = message
+        open_chat = "https://web.whatsapp.com/send?photo=" + phNo + "&text=" + messageText
+        browser.open(open_chat)
+        time.sleep(15)
+        keyboard.press("enter")
+
+    def WhatsAppAdvGroup(group_id, message):
+        open_chat = "https://web.whatsapp.com/accept?code=" + group_id
+        browser.open(open_chat)
+        time.sleep(15)
+        keyboard.write(message)
+        time.sleep(2)
+        keyboard.press("enter")
+
     while True:
         query = TakeCommand()
         if "hello" in query:
@@ -504,6 +521,27 @@ def TaskExecution():
             assert len(how_to_function) == 1
             how_to_function[0].print()
             Speak(how_to_function[0].summary)
+        elif "whatsapp message advanced" in query:
+            query = query.replace("jarvis", "")
+            query = query.replace("send", "")
+            query = query.replace("whatsapp message advanced", "")
+            query = query.replace("to", "")
+            name = query
+            if "neha" in name:
+                phNo = "XXXXXXXXXXX"
+                Speak(f"What's the message for {name}")
+                message = TakeCommand()
+                WhatsAppAdv(phNo, message)
+            elif "kamakshi" in name:
+                phNo = "XXXXXXXXXXX"
+                Speak(f"What's the message for {name}")
+                message = TakeCommand()
+                WhatsAppAdv(phNo, message)
+            elif "family" in name:
+                group_id = "XXXXXXXXXX"
+                Speak(f"What's the message for {name}")
+                message = TakeCommand()
+                WhatsAppAdvGroup(group_id, message)
 
 
 TaskExecution()
