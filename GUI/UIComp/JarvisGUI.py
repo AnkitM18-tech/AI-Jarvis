@@ -14,6 +14,7 @@ import keyboard
 import pyjokes
 import PyPDF2
 import time
+import chatbot
 from gtts import gTTS
 import datetime
 from playsound import playsound
@@ -560,6 +561,11 @@ class MainThread(QThread):
                     Speak(f"What's the message for {name}")
                     message = TakeCommand()
                     WhatsAppAdvGroup(group_id, message)
+            elif "chatbot" in query:
+                Speak("Your Query Sir!")
+                command = input()
+                reply = chatbot.chatbot(command)
+                Speak(reply)
 
 
 startFunctions = MainThread()

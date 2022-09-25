@@ -7,6 +7,7 @@ import os
 from pywikihow import search_wikihow
 import requests
 from bs4 import BeautifulSoup
+import chatbot
 import wikipedia
 import pyautogui as pag
 import keyboard
