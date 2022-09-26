@@ -17,7 +17,7 @@ reply_2 = [
 
 
 def chatbot(Text):
-    for word in Text.split():
+    for word in Text.split(""):
         if word in command_1:
             return random.choice(reply_1)
         elif word in command_2:
