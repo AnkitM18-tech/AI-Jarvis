@@ -23,7 +23,7 @@ assistant = pyttsx3.init("sapi5")
 voices = assistant.getProperty("voices")
 # print(voices)
 assistant.setProperty("voices", voices[0].id)
-assistant.setProperty("rate", 170)
+assistant.setProperty("rate", 115)
 
 
 def Speak(audio):
@@ -545,4 +545,14 @@ def TaskExecution():
                 WhatsAppAdvGroup(group_id, message)
 
 
-TaskExecution()
+# TaskExecution()
+Speak('''
+    Twinkle, twinkle, little star
+    How I wonder what you are
+    Up above the world so high
+    Like a diamond in the sky
+    Twinklw, twinkle, little star
+    How I wonder what you are
+    When the blazing sun is gone
+    When he nothings shines upon
+''')
