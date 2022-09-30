@@ -5,6 +5,8 @@ import requests
 import datetime
 import os
 import pyautogui
+import webbrowser
+import random
 
 
 engine = pyttsx3.init("sapi5")
@@ -146,3 +148,17 @@ if __name__ == "__main__":
                 elif "what do you remember" in query:
                     remember = open("Remember.txt", "r")
                     speak("You told me to remember that" + remember.read())
+                elif "tired" in query:
+                    speak("Playing your favourite songs, sir")
+                    # You can choose any number of songs (I have only choosen 3)
+                    a = (1, 2, 3)
+                    b = random.choice(a)
+                    if b == 1:
+                        webbrowser.open(
+                            "https://www.youtube.com/watch?v=ru0K8uYEZWw")
+                    elif b == 2:
+                        webbrowser.open(
+                            "https://www.youtube.com/watch?v=jZhQOvvV45w")
+                    else:
+                        webbrowser.open(
+                            "https://www.youtube.com/watch?v=rtOvBOTyX00")
