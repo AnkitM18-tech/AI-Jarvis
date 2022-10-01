@@ -1,12 +1,15 @@
 import pyttsx3
 import speech_recognition
 from bs4 import BeautifulSoup
+from pywhatkit.sc import shutdown
 import requests
 import datetime
 import os
 import pyautogui
 import webbrowser
 import random
+from plyer import notification
+from pygame import mixer
 
 for i in range(3):
     a = input("Enter Password to open Jarvis :- ")
@@ -182,7 +185,7 @@ if __name__ == "__main__":
                 elif "shutdown the system" in query:
                     speak("Are You sure you want to shutdown")
                     shutdown = input(
-                        "Do you wish to shutdown your computer? (yes/no)")
+                        "Do you wish to shutdown your computer? (yes/no) : ")
                     if shutdown == "yes":
                         os.system("shutdown /s /t 1")
                     elif shutdown == "no":
@@ -227,3 +230,15 @@ if __name__ == "__main__":
                             file = open("tasks.txt", "a")
                             file.write(f"{i}. {tasks[i]}\n")
                             file.close()
+                elif "show my schedule" in query:
+                    file = open("tasks.txt", "r")
+                    content = file.read()
+                    file.close()
+                    mixer.init()
+                    mixer.music.load("notification.mp3")
+                    mixer.music.play()
+                    notification.notify(
+                        title="My schedule :-",
+                        message=content,
+                        timeout=15
+                    )
