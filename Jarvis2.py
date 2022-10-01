@@ -275,3 +275,4 @@ if __name__ == "__main__":
                     speak("SMILE")
                     pyautogui.sleep(2)
                     pyautogui.press("enter")
+                    speak("Picture Clicked Sir!")
