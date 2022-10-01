@@ -204,3 +204,26 @@ if __name__ == "__main__":
                     new_password.close()
                     speak("Done sir")
                     speak(f"Your new password is{new_pw}")
+                elif "schedule my day" in query:
+                    tasks = []  # Empty list
+                    speak("Do you want to clear old tasks (Plz speak YES or NO)")
+                    query = takeCommand().lower()
+                    if "yes" in query:
+                        file = open("tasks.txt", "w")
+                        file.write(f"")
+                        file.close()
+                        no_tasks = int(input("Enter the no. of tasks :- "))
+                        i = 0
+                        for i in range(no_tasks):
+                            tasks.append(input("Enter the task :- "))
+                            file = open("tasks.txt", "a")
+                            file.write(f"{i}. {tasks[i]}\n")
+                            file.close()
+                    elif "no" in query:
+                        i = 0
+                        no_tasks = int(input("Enter the no. of tasks :- "))
+                        for i in range(no_tasks):
+                            tasks.append(input("Enter the task :- "))
+                            file = open("tasks.txt", "a")
+                            file.write(f"{i}. {tasks[i]}\n")
+                            file.close()
