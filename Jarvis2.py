@@ -162,3 +162,6 @@ if __name__ == "__main__":
                     else:
                         webbrowser.open(
                             "https://www.youtube.com/watch?v=rtOvBOTyX00")
+                elif "news" in query:
+                    from Features import latestnews
+                    latestnews()
