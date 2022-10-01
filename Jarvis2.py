@@ -267,3 +267,11 @@ if __name__ == "__main__":
                     im.save(f"Screenshots/ss-{datetime.now()}.jpg")
                     os.startfile("D:\\GitHub\\AI-Jarvis\\Screenshots")
                     speak("Here is your ScreenShot Sir!")
+                elif "click my photo" in query:
+                    pyautogui.press("super")
+                    pyautogui.typewrite("camera")
+                    pyautogui.press("enter")
+                    pyautogui.sleep(2)
+                    speak("SMILE")
+                    pyautogui.sleep(2)
+                    pyautogui.press("enter")
