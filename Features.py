@@ -285,3 +285,5 @@ def sendMessage():
         message = str(input("Enter the message - "))
         pywhatkit.sendwhatmsg("+91000000000", message,
                               time_hour=strTime, time_min=update)
+
+    speak("Sending Message!")
