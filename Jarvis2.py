@@ -165,3 +165,11 @@ if __name__ == "__main__":
                 elif "news" in query:
                     from Features import latestnews
                     latestnews()
+                elif "shutdown the system" in query:
+                    speak("Are You sure you want to shutdown")
+                    shutdown = input(
+                        "Do you wish to shutdown your computer? (yes/no)")
+                    if shutdown == "yes":
+                        os.system("shutdown /s /t 1")
+                    elif shutdown == "no":
+                        break
