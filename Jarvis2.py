@@ -242,3 +242,10 @@ if __name__ == "__main__":
                         message=content,
                         timeout=15
                     )
+                elif "open by pyauto" in query:
+                    query = query.replace("open", "")
+                    query = query.replace("jarvis", "")
+                    pyautogui.press("super")
+                    pyautogui.typewrite(query)
+                    pyautogui.sleep(2)
+                    pyautogui.press("enter")
