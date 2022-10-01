@@ -8,6 +8,7 @@ import os
 import pyautogui
 import webbrowser
 import random
+import speedtest
 from plyer import notification
 from pygame import mixer
 
@@ -249,3 +250,14 @@ if __name__ == "__main__":
                     pyautogui.typewrite(query)
                     pyautogui.sleep(2)
                     pyautogui.press("enter")
+                elif "internet speed" in query:
+                    wifi = speedtest.Speedtest()
+                    upload_net = wifi.upload()/1048576  # Megabyte = 1024*1024 Bytes
+                    download_net = wifi.download()/1048576
+                    print("Wifi Upload Speed is", upload_net)
+                    print("Wifi download speed is ", download_net)
+                    speak(f"Wifi download speed is {download_net}")
+                    speak(f"Wifi Upload speed is {upload_net}")
+                elif "play a game" in query:
+                    from Features import game_play
+                    game_play()
