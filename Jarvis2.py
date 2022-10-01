@@ -173,3 +173,9 @@ if __name__ == "__main__":
                         os.system("shutdown /s /t 1")
                     elif shutdown == "no":
                         break
+                elif "calculate" in query:
+                    from Features import WolfRamAlpha
+                    from Features import Calculate
+                    query = query.replace("calculate", "")
+                    query = query.replace("jarvis", "")
+                    Calculate(query)
