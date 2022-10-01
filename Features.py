@@ -11,6 +11,12 @@ from pynput.keyboard import Key, Controller
 import requests
 import wolframalpha
 import json
+import pywhatkit
+from bs4 import BeautifulSoup
+from time import sleep
+import os
+from datetime import timedelta
+from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -261,3 +267,21 @@ def Calculate(query):
 
     except:
         speak("The value is not answerable")
+
+
+def sendMessage():
+    strTime = int(datetime.now().strftime("%H"))
+    update = int((datetime.now()+timedelta(minutes=2)).strftime("%M"))
+    speak("Who do you want to message")
+    a = int(input('''Neha - 1
+    Kamakshi - 2'''))
+    if a == 1:
+        speak("Whats the message")
+        message = str(input("Enter the message - "))
+        pywhatkit.sendwhatmsg("+91000000000", message,
+                              time_hour=strTime, time_min=update)
+    elif a == 2:
+        speak("Whats the message")
+        message = str(input("Enter the message - "))
+        pywhatkit.sendwhatmsg("+91000000000", message,
+                              time_hour=strTime, time_min=update)
