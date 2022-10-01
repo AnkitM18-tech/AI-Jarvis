@@ -276,3 +276,6 @@ if __name__ == "__main__":
                     pyautogui.sleep(2)
                     pyautogui.press("enter")
                     speak("Picture Clicked Sir!")
+                elif "show my focus" in query:
+                    from Features import focus_graph
+                    focus_graph()
