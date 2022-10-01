@@ -261,3 +261,9 @@ if __name__ == "__main__":
                 elif "play a game" in query:
                     from Features import game_play
                     game_play()
+                elif "screenshot" in query:
+                    import pyautogui
+                    im = pyautogui.screenshot()
+                    im.save(f"Screenshots/ss-{datetime.now()}.jpg")
+                    os.startfile("D:\\GitHub\\AI-Jarvis\\Screenshots")
+                    speak("Here is your ScreenShot Sir!")
