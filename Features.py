@@ -9,6 +9,7 @@ import pyautogui
 from time import sleep
 from pynput.keyboard import Key, Controller
 import requests
+import wolframalpha
 import json
 from dotenv import load_dotenv
 load_dotenv()
@@ -230,3 +231,33 @@ def latestnews():
             break
 
     speak("thats all")
+
+
+def WolfRamAlpha(query):
+    apikey = os.getenv("WOLFRAM_API_KEY")
+    requester = wolframalpha.Client(apikey)
+    requested = requester.query(query)
+
+    try:
+        answer = next(requested.results).text
+        return answer
+    except:
+        speak("The value is not answerable")
+
+
+def Calculate(query):
+    Term = str(query)
+    Term = Term.replace("jarvis", "")
+    Term = Term.replace("multiply", "*")
+    Term = Term.replace("plus", "+")
+    Term = Term.replace("minus", "-")
+    Term = Term.replace("divide", "/")
+
+    Final = str(Term)
+    try:
+        result = WolfRamAlpha(Final)
+        print(f"{result}")
+        speak(result)
+
+    except:
+        speak("The value is not answerable")
