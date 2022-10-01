@@ -179,3 +179,6 @@ if __name__ == "__main__":
                     query = query.replace("calculate", "")
                     query = query.replace("jarvis", "")
                     Calculate(query)
+                elif "whatsapp" in query:
+                    from Features import sendMessage
+                    sendMessage()
