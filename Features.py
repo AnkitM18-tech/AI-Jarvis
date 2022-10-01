@@ -230,7 +230,7 @@ def latestnews():
         news_url = articles["url"]
         print(f"for more info visit: {news_url}")
 
-        a = input("[press 1 to cont] and [press 2 to stop]")
+        a = input("[press 1 to cont] and [press 2 to stop] - ")
         if str(a) == "1":
             pass
         elif str(a) == "2":
@@ -273,8 +273,7 @@ def sendMessage():
     strTime = int(datetime.now().strftime("%H"))
     update = int((datetime.now()+timedelta(minutes=2)).strftime("%M"))
     speak("Who do you want to message")
-    a = int(input('''Neha - 1
-    Kamakshi - 2'''))
+    a = int(input('''Neha - 1,Kamakshi - 2 : '''))
     if a == 1:
         speak("Whats the message")
         message = str(input("Enter the message - "))
