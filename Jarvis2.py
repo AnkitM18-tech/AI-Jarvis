@@ -294,3 +294,6 @@ if __name__ == "__main__":
                     query = query.replace("jarvis", "")
                     query = query.replace("translate", "")
                     translategl(query)
+                elif "music" in query:
+                    from Features import Music
+                    Music()
