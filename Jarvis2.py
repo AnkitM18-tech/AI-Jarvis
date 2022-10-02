@@ -307,3 +307,7 @@ if __name__ == "__main__":
                 elif "joke" in query:
                     joke = pyjokes.get_joke()
                     speak(joke)
+                elif "my location" in query:
+                    speak("Ok sir, Wait a second!")
+                    webbrowser.open(
+                        "https://www.google.com/maps/@20.9425897,86.1242782,15z")
