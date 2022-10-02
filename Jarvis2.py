@@ -282,10 +282,15 @@ if __name__ == "__main__":
                     if (a == 1):
                         speak("Entering the focus mode....")
                         os.startfile(
-                            "D:\GitHub\AI-Jarvis\FocusMode.py")
+                            "D:\\GitHub\\AI-Jarvis\\FocusMode.py")
                         exit()
                     else:
                         pass
                 elif "show my focus" in query:
                     from Features import focus_graph
                     focus_graph()
+                elif "translate" in query:
+                    from Features import translategl
+                    query = query.replace("jarvis", "")
+                    query = query.replace("translate", "")
+                    translategl(query)
