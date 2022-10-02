@@ -6,6 +6,7 @@ import requests
 import datetime
 import os
 import pyjokes
+import keyboard
 from pywikihow import search_wikihow
 import pyautogui
 import webbrowser
@@ -320,3 +321,14 @@ if __name__ == "__main__":
                     assert len(how_to_function) == 1
                     how_to_function[0].print()
                     speak(how_to_function[0].summary)
+                elif "close this tab" in query:
+                    keyboard.press_and_release("ctrl + w")
+                elif "open new tab" in query:
+                    keyboard.press_and_release("ctrl + t")
+                elif "open new window" in query:
+                    keyboard.press_and_release("ctrl + n")
+                elif "history" in query:
+                    keyboard.press_and_release("ctrl + h")
+                elif "chrome automation" in query:
+                    from Features import AutomateChrome
+                    AutomateChrome()
