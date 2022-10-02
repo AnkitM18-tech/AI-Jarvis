@@ -471,3 +471,21 @@ def Reader():
                 playsound("book.mp3")
         else:
             speak(text)
+
+
+def AutomateChrome():
+    speak("Chrome Automation Launched")
+    speak("What's Your Command Sir?")
+    command = takeCommand()
+    if "close this tab" in command:
+        # keyboard.press_and_release("ctrl + w") # import keyboard
+        pyautogui.hotkey("ctrl", "w")
+    elif "open new tab" in command:
+        # keyboard.press_and_release("ctrl + t")
+        pyautogui.hotkey("ctrl", "t")
+    elif "open new window" in command:
+        # keyboard.press_and_release("ctrl + n")
+        pyautogui.hotkey("ctrl", "n")
+    elif "history" in command:
+        # keyboard.press_and_release("ctrl + h")
+        pyautogui.hotkey("ctrl", "h")
