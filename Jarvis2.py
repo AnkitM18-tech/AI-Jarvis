@@ -5,6 +5,7 @@ from pywhatkit.sc import shutdown
 import requests
 import datetime
 import os
+import pyjokes
 import pyautogui
 import webbrowser
 import random
@@ -300,3 +301,9 @@ if __name__ == "__main__":
                 elif "dictionary" in query:
                     from Features import Dictionary
                     Dictionary()
+                elif "read book" in query:
+                    from Features import Reader
+                    Reader()
+                elif "joke" in query:
+                    joke = pyjokes.get_joke()
+                    speak(joke)
