@@ -6,6 +6,7 @@ import requests
 import datetime
 import os
 import pyjokes
+from pywikihow import search_wikihow
 import pyautogui
 import webbrowser
 import random
@@ -311,3 +312,11 @@ if __name__ == "__main__":
                     speak("Ok sir, Wait a second!")
                     webbrowser.open(
                         "https://www.google.com/maps/@20.9425897,86.1242782,15z")
+                elif "how to" in query:
+                    speak("Getting Data From Internet!")
+                    op = query.replace("jarvis", "")
+                    max_result = 1
+                    how_to_function = search_wikihow(op, max_result)
+                    assert len(how_to_function) == 1
+                    how_to_function[0].print()
+                    speak(how_to_function[0].summary)
