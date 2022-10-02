@@ -25,6 +25,7 @@ import googletrans
 import pyttsx3
 import speech_recognition
 import os
+from pydictionary import Dictionary as dictn
 from playsound import playsound
 import time
 import os
@@ -402,3 +403,39 @@ def Music():
     else:
         pywhatkit.playonyt(musicName)
         speak("Your Song Has Been Started!, Enjoy Sir!")
+
+
+def Dictionary():
+    speak("Opened Dictionary")
+    speak("Tell me the word!")
+    word = takeCommand()
+
+    if "meaning" in word:
+        word = word.replace("what is the", "")
+        word = word.replace("jarvis", "")
+        word = word.replace("of", "")
+        word = word.replace("meaning", "")
+        temp_word = word
+        word = dictn(word)
+        result = word.meanings()
+        speak(f"The meanings for {temp_word} is : {result}")
+    elif "synonym" in word:
+        word = word.replace("what is the", "")
+        word = word.replace("jarvis", "")
+        word = word.replace("of", "")
+        word = word.replace("synonym", "")
+        temp_word = word
+        word = dictn(word)
+        result = word.synonyms()
+        speak(f"The synonyms for {temp_word} is : {result}")
+    elif "antonym" in word:
+        word = word.replace("what is the", "")
+        word = word.replace("jarvis", "")
+        word = word.replace("of", "")
+        word = word.replace("antonym", "")
+        temp_word = word
+        word = dictn(word)
+        result = word.antonyms()
+        speak(f"The antonyms for {temp_word} is : {result}")
+
+    speak("Exited Dictionary!")
