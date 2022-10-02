@@ -13,6 +13,7 @@ from pynput.keyboard import Key, Controller
 import requests
 import wolframalpha
 import json
+import PyPDF2
 import pywhatkit
 from bs4 import BeautifulSoup
 from time import sleep
@@ -439,3 +440,34 @@ def Dictionary():
         speak(f"The antonyms for {temp_word} is : {result}")
 
     speak("Exited Dictionary!")
+
+
+def Reader():
+    speak("Tell me the Name of the Book!")
+    name = takeCommand()
+    if "manager" in name:
+        os.startfile("D:\\GitHub\\AI-Jarvis\\The One Minute Manager.pdf")
+        book = open(
+            "D:\\GitHub\\AI-Jarvis\\The One Minute Manager.pdf", "rb")
+        pdfReader = PyPDF2.PdfFileReader(book)
+        pages = pdfReader.getNumPages()
+        speak(f"Number Of Pages In this Books Are {pages}")
+        speak("From Which Page I have to start reading ?")
+        numPage = int(input("Enter Page number : "))
+        page = pdfReader.getPage(numPage)
+        text = page.extractText()
+        speak("In Which Language , Do I have to Read ?")
+        lang = takeCommand()
+
+        if "hindi" in lang:
+            translate = Translator()
+            textHindi = translate.translate(text, "hi")
+            textTm = textHindi.text
+            speech = gTTS(text=textTm)
+            try:
+                speech.save("book.mp3")
+                playsound("book.mp3")
+            except:
+                playsound("book.mp3")
+        else:
+            speak(text)
