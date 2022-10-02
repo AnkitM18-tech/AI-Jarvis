@@ -391,3 +391,14 @@ def translategl(query):
         os.remove("voice.mp3")
     except:
         print("Unable to translate")
+
+
+def Music():
+    speak("Tell me the Name of the Song!")
+    musicName = takeCommand()
+
+    if "off" in musicName:
+        os.startfile("D:\\GitHub\\AI-Jarvis\\Off My Face.mp3")
+    else:
+        pywhatkit.playonyt(musicName)
+        speak("Your Song Has Been Started!, Enjoy Sir!")
