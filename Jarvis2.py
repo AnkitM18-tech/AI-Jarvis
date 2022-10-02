@@ -297,3 +297,6 @@ if __name__ == "__main__":
                 elif "music" in query:
                     from Features import Music
                     Music()
+                elif "dictionary" in query:
+                    from Features import Dictionary
+                    Dictionary()
