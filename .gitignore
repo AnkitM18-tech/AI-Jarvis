@@ -1,3 +1,6 @@
 jarvis
 __pycache__
 .env
+*.spec
+dist
+build/
