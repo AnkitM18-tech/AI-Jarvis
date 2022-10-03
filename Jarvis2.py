@@ -261,13 +261,16 @@ if __name__ == "__main__":
                     print("Wifi download speed is ", download_net)
                     speak(f"Wifi download speed is {download_net}")
                     speak(f"Wifi Upload speed is {upload_net}")
-                elif "play a game" in query:
+                elif "game" in query:
                     from Features import game_play
                     game_play()
                 elif "screenshot" in query:
                     import pyautogui
                     im = pyautogui.screenshot()
-                    im.save(f"Screenshots/ss-{datetime.now()}.jpg")
+                    name = datetime.datetime.now().strftime("%H:%M:%S")
+                    name = name.replace(":", "")
+                    name = name.replace(" ", "")
+                    im.save(f"Screenshots/ss-{name}.jpg")
                     os.startfile("D:\\GitHub\\AI-Jarvis\\Screenshots")
                     speak("Here is your ScreenShot Sir!")
                 elif "click my photo" in query:
