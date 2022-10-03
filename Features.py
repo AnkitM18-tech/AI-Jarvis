@@ -39,12 +39,12 @@ load_dotenv()
 def takeCommand():
     r = speech_recognition.Recognizer()
     with speech_recognition.Microphone() as source:
-        print("Listening.....")
+        print("Listening...")
         r.pause_threshold = 1
         r.energy_threshold = 300
         audio = r.listen(source, 0, 4)
     try:
-        print("Understanding..")
+        print("Understanding...")
         query = r.recognize_google(audio, language='en-in')
         print(f"You Said: {query}\n")
     except Exception as e:
@@ -53,7 +53,7 @@ def takeCommand():
     return query
 
 
-query = takeCommand().lower()
+# query = takeCommand().lower()
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
@@ -67,12 +67,15 @@ engine.setProperty("rate", 170)
 
 
 def speak(audio):
+    print("   ")
     engine.say(audio)
+    print(f": {audio}")
+    print("   ")
     engine.runAndWait()
 
 
 def greetMe():
-    hour = int(datetime.datetime.now().hour)
+    hour = int(datetime.now().hour)
     if hour >= 0 and hour <= 12:
         speak("Good Morning,sir")
     elif hour > 12 and hour <= 18:
