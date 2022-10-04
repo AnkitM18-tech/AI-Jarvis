@@ -26,29 +26,31 @@ class Ui_MainWindow(object):
         self.foreground = QtWidgets.QLabel(self.centralwidget)
         self.foreground.setGeometry(QtCore.QRect(0, -20, 1921, 1001))
         self.foreground.setText("")
-        self.foreground.setPixmap(QtGui.QPixmap(".\\GUI/ExtraGui/Jarvis_Gui (2).gif"))
+        self.foreground.setPixmap(QtGui.QPixmap(
+            ".\\GUI/ExtraGui/Jarvis_Gui (2).gif"))
         self.foreground.setScaledContents(True)
         self.foreground.setObjectName("foreground")
         self.startbtn = QtWidgets.QPushButton(self.centralwidget)
         self.startbtn.setGeometry(QtCore.QRect(1470, 430, 181, 71))
         self.startbtn.setStyleSheet("background-color: rgb(0, 0, 255);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 16pt \"CaskaydiaCove NF\";\n"
-"border: 1px solid white;\n"
-"/*background-color: rgb(85, 255, 255);*/")
+                                    "color: rgb(255, 255, 255);\n"
+                                    "font: 75 16pt \"CaskaydiaCove NF\";\n"
+                                    "border: 1px solid white;\n"
+                                    "/*background-color: rgb(85, 255, 255);*/")
         self.startbtn.setObjectName("startbtn")
         self.exitbtn = QtWidgets.QPushButton(self.centralwidget)
         self.exitbtn.setGeometry(QtCore.QRect(1470, 530, 181, 71))
         self.exitbtn.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 16pt \"CaskaydiaCove NF\";\n"
-"background-color: rgb(255, 0, 0);\n"
-"border: 1px solid white;")
+                                   "font: 75 16pt \"CaskaydiaCove NF\";\n"
+                                   "background-color: rgb(255, 0, 0);\n"
+                                   "border: 1px solid white;")
         self.exitbtn.setObjectName("exitbtn")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
         self.textBrowser.setGeometry(QtCore.QRect(770, 380, 391, 61))
         self.textBrowser.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 2px solid white;")
+                                       "color: rgb(255, 255, 255);\n"
+                                       "border: 2px solid white;\n"
+                                       "font: 75 24pt \"CaskaydiaCove NF\";\n")
         self.textBrowser.setObjectName("textBrowser")
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -57,7 +59,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Jarvis"))
         self.startbtn.setText(_translate("MainWindow", "START"))
         self.exitbtn.setText(_translate("MainWindow", "EXIT"))
 
