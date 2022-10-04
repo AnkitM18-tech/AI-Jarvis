@@ -3,7 +3,6 @@ import speech_recognition
 from bs4 import BeautifulSoup
 from pywhatkit.sc import shutdown
 import requests
-import datetime
 import os
 import pyjokes
 import keyboard
@@ -14,15 +13,10 @@ import speedtest
 from plyer import notification
 from pygame import mixer
 import sys
-import Jarvis2
 import matplotlib.pyplot as pt
-import pyttsx3
-import datetime
-import speech_recognition
 import pywhatkit
 import wikipedia
 import webbrowser
-import os
 import random
 import pyautogui
 from time import sleep
@@ -31,22 +25,14 @@ import requests
 import wolframalpha
 import json
 import PyPDF2
-import pywhatkit
-from bs4 import BeautifulSoup
-from time import sleep
 from fnmatch import translate
 from time import sleep
 from googletrans import Translator
 import googletrans
 from gtts import gTTS
-import googletrans
-import pyttsx3
-import speech_recognition
-import os
 from pydictionary import Dictionary as dictn
 from playsound import playsound
 import time
-import os
 from datetime import timedelta
 from datetime import datetime
 from PyQt5 import QtCore, QtWidgets, QtGui
@@ -434,7 +420,7 @@ class MainThread(QThread):
 
         def Music():
             speak("Tell me the Name of the Song!")
-            musicName = takeCommand()
+            musicName = takeCommand().lower()
 
             if "off" in musicName:
                 os.startfile("D:\\GitHub\\AI-Jarvis\\Off My Face.mp3")
@@ -445,7 +431,7 @@ class MainThread(QThread):
         def Dictionary():
             speak("Opened Dictionary")
             speak("Tell me the word!")
-            word = takeCommand()
+            word = takeCommand().lower()
 
             if "meaning" in word:
                 word = word.replace("what is the", "")
@@ -479,7 +465,7 @@ class MainThread(QThread):
 
         def Reader():
             speak("Tell me the Name of the Book!")
-            name = takeCommand()
+            name = takeCommand().lower()
             if "manager" in name:
                 os.startfile(
                     "D:\\GitHub\\AI-Jarvis\\The One Minute Manager.pdf")
@@ -509,6 +495,7 @@ class MainThread(QThread):
                     speak(text)
 
         def AutomateChrome():
+            import pyautogui
             speak("Chrome Automation Launched")
             speak("What's Your Command Sir?")
             command = takeCommand()
@@ -528,7 +515,7 @@ class MainThread(QThread):
         while True:
             query = takeCommand().lower()
             if "wake up" in query:
-                from Features import greetMe
+                # from Features import greetMe
                 greetMe()
 
                 while True:
@@ -586,24 +573,31 @@ class MainThread(QThread):
                         alarm(a)
                         speak("Done,sir")
                     elif "pause" in query:
+                        import pyautogui
                         pyautogui.press("k")
                         speak("video paused")
                     elif "play" in query:
+                        import pyautogui
                         pyautogui.press("k")
                         speak("video played")
                     elif "mute" in query:
+                        import pyautogui
                         pyautogui.press("m")
                         speak("video muted")
                     elif "skip" in query:
+                        import pyautogui
                         pyautogui.press("l")
                         speak("video skipped")
                     elif "back" in query:
+                        import pyautogui
                         pyautogui.press("j")
                         speak("previous video played")
                     elif "full screen" in query:
+                        import pyautogui
                         pyautogui.press("f")
                         speak("video full screen")
                     elif "film mode" in query:
+                        import pyautogui
                         pyautogui.press("t")
                         speak("video theater mode")
                     elif "volume up" in query:
@@ -702,6 +696,7 @@ class MainThread(QThread):
                             timeout=15
                         )
                     elif "open by pyauto" in query:
+                        import pyautogui
                         query = query.replace("open", "")
                         query = query.replace("jarvis", "")
                         pyautogui.press("super")
@@ -722,13 +717,14 @@ class MainThread(QThread):
                     elif "screenshot" in query:
                         import pyautogui
                         im = pyautogui.screenshot()
-                        name = datetime.datetime.now().strftime("%H:%M:%S")
+                        name = datetime.now().strftime("%H:%M:%S")
                         name = name.replace(":", "")
                         name = name.replace(" ", "")
                         im.save(f"Screenshots/ss-{name}.jpg")
                         os.startfile("D:\\GitHub\\AI-Jarvis\\Screenshots")
                         speak("Here is your ScreenShot Sir!")
                     elif "click my photo" in query:
+                        import pyautogui
                         pyautogui.press("super")
                         pyautogui.typewrite("camera")
                         pyautogui.press("enter")
@@ -809,7 +805,17 @@ class GUI_Start(QMainWindow):
         self.jarvis_ui.foreground.setMovie(self.jarvis_ui.gif_foreground)
         self.jarvis_ui.gif_foreground.start()
 
+        timer = QTimer(self)
+        timer.timeout.connect(self.showTime)
+        timer.start(1000)
+
         startFunctions.start()
+
+    def showTime(self):
+        current_time = QTime.currentTime()
+        labelTime = current_time.toString("hh:mm:ss")
+        showLabel = "Time : " + labelTime
+        self.jarvis_ui.textBrowser.setText(showLabel)
 
 
 Gui_App = QApplication(sys.argv)
