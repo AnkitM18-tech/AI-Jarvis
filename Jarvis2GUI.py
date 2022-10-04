@@ -52,7 +52,8 @@ for i in range(3):
     pw = pw_file.read()
     pw_file.close()
     if (a == pw):
-        print("WELCOME SIR ! PLZ SPEAK [WAKE UP] TO LOAD ME UP")
+        print(
+            "WELCOME SIR ! PLZ CLICK [START BUTTON ON GUI] AND SPEAK [WAKE UP] TO LOAD ME UP")
         break
     elif (i == 2 and a != pw):
         exit()
@@ -555,7 +556,7 @@ class MainThread(QThread):
                         temp = data.find("div", class_="BNeawe").text
                         speak(f"current {search} is {temp}")
                     elif "the time" in query:
-                        strTime = datetime.datetime.now().strftime("%H:%M")
+                        strTime = datetime.now().strftime("%H:%M")
                         speak(f"Sir, the time is {strTime}")
                     elif "finally sleep" in query:
                         speak("Going to sleep,sir")
